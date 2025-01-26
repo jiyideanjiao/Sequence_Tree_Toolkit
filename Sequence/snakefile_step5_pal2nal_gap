@@ -1,0 +1,15 @@
+OGG, = glob_wildcards("{ogg}.aln")
+THREADS = 1
+
+rule all:
+    input: expand("{ogg}.codon", ogg=OGG)
+
+rule muscle:
+    input: "{ogg}.aln"
+    output: "{ogg}.codon"
+    threads: 1
+    shell:
+        """
+        perl pal2nal.pl {input} {wildcards.ogg}.fa2 \
+            -output fasta > {output} 2> {wildcards.ogg}.log
+        """

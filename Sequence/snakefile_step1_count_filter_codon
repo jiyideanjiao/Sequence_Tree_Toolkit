@@ -1,0 +1,11 @@
+OGG, = glob_wildcards("{ogg}.fa")
+THREADS = 1
+
+rule all:
+    input: expand("{ogg}.fa1",ogg=OGG)
+
+rule blastN:
+    input: "{ogg}.fa"
+    output: "{ogg}.fa1"
+    threads: 1
+    shell: "python count_filter_codon.py {input} {output}"

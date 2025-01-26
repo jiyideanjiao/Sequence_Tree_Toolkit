@@ -1,0 +1,11 @@
+OGG, = glob_wildcards("{ogg}.pep")
+THREADS = 1
+
+rule all:
+	input: expand("{ogg}.aln",ogg=OGG)
+
+rule muscle:
+	input: "{ogg}.pep"
+	output: "{ogg}.aln"
+	threads: 1
+	shell: "mafft {input} > {output}"

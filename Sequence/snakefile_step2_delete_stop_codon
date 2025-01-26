@@ -1,0 +1,11 @@
+OGG, = glob_wildcards("{ogg}.fa1")
+THREADS = 1
+
+rule all:
+    input: expand("{ogg}.fa2",ogg=OGG)
+
+rule blastN:
+    input: "{ogg}.fa1"
+    output: "{ogg}.fa2"
+    threads: 1
+    shell: "python delete_codon.py {input} {output}"

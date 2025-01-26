@@ -1,0 +1,11 @@
+OGG, = glob_wildcards("{ogg}.fa2")
+THREADS = 1
+
+rule all:
+	input: expand("{ogg}.pep",ogg=OGG)
+
+rule muscle:
+	input: "{ogg}.fa2"
+	output: "{ogg}.pep"
+	threads: 1
+	shell: "perl cds2prot.pl {input} > {output}"

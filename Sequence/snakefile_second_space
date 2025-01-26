@@ -1,0 +1,11 @@
+OGG, = glob_wildcards("{ogg}.fas")
+THREADS = 1
+
+rule all:
+    input: expand("{ogg}.fa",ogg=OGG)
+
+rule print:
+    input: "{ogg}.fas"
+    output: "{ogg}.fa"
+    threads: 1
+    shell: "python replace_second_underscore.py {input} > {output}"
