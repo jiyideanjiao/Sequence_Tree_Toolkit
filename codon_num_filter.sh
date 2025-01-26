@@ -16,3 +16,17 @@ sort all_uniq2.txt | uniq -c > count_freq1.txt
 awk '{print $2,$1}' count_freq1.txt > count_freq2.txt
 sed -i 's/ /,/g' count_freq2.txt
 mv count_freq2.txt count_freq2.csv
+
+
+cp all_uniq1.txt uniq.txt
+awk '{print $1,$3}' uniq.txt > uniq1.txt
+sed -i 's/ /:/g' uniq1.txt
+mv uniq1.txt count
+python filter.py
+mkdir yes
+
+cat final | awk '{print$1}' | xargs -I '{}' mv {} yes/
+ls *.phy > rm.sh
+sed -i 's/.phy/.tre/g' rm.sh
+sed -i 's/OG/rm OG/g' rm.sh
+sh rm.sh
