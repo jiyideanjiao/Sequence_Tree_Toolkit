@@ -1,0 +1,11 @@
+OGG, = glob_wildcards("{ogg}.txt")
+THREADS = 1
+
+rule all:
+    input: expand("{ogg}.tre",ogg=OGG)
+
+rule trim:
+    input: "{ogg}.txt"
+    output: "{ogg}.tre"
+    threads: 1
+    shell: "Rscript trim.R {input} > {output}"
