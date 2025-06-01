@@ -1,0 +1,11 @@
+OGG, = glob_wildcards("{ogg}.trimal")
+THREADS = 1
+
+rule all:
+    input: expand("{ogg}.txt",ogg=OGG)
+
+rule merge:
+    input: "{ogg}.trimal"
+    output: "{ogg}.txt"
+    threads: 1
+    shell: "python extract_aa_gap.py {input} {output}"
