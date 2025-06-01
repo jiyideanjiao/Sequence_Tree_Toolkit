@@ -1,0 +1,4 @@
+grep "_" OG*.txt > eye_aa_gap.csv
+
+# add header
+ogg_id,species,length,aa,gap
