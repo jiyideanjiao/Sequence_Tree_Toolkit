@@ -1,0 +1,11 @@
+OGG, = glob_wildcards("{ogg}.codon")
+THREADS = 1
+
+rule all:
+    input: expand("{ogg}.phy",ogg=OGG)
+
+rule merge:
+    input: "{ogg}.codon"
+    output: "{ogg}.phy"
+    threads: 1
+    shell: "python convert_fasta2phylip.py {input} {output}"
