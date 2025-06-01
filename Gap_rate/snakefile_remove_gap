@@ -1,0 +1,11 @@
+OGG, = glob_wildcards("{ogg}.pruned.aln")
+THREADS = 1
+
+rule all:
+    input: expand("{ogg}.fa",ogg=OGG)
+
+rule merge:
+    input: "{ogg}.pruned.aln"
+    output: "{ogg}.fa"
+    threads: 1
+    shell: "python remove_gap.py {input} {output}"
