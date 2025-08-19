@@ -1,0 +1,11 @@
+OGG, = glob_wildcards("{ogg}.aln")
+THREADS = 1
+
+rule all:
+    input: expand("{ogg}.trimal",ogg=OGG)
+
+rule merge:
+    input: "{ogg}.aln"
+    output: "{ogg}.trimal"
+    threads: 1
+    shell: "trimal -in {input} -out {output} -automated1"
