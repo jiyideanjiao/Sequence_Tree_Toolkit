@@ -1,0 +1,14 @@
+# sp_num, codon_num
+
+grep " 0" OG*.phy > 0.txt
+grep " 1" OG*.phy > 1.txt
+grep " 2" OG*.phy > 2.txt
+grep " 3" OG*.phy > 3.txt
+grep " 4" OG*.phy > 4.txt
+grep " 5" OG*.phy > 5.txt
+grep " 6" OG*.phy > 6.txt
+grep " 7" OG*.phy > 7.txt
+grep " 8" OG*.phy > 8.txt
+grep " 9" OG*.phy > 9.txt
+
+cat 0.txt 1.txt 2.txt 3.txt 4.txt 5.txt 6.txt 7.txt 8.txt 9.txt > count
