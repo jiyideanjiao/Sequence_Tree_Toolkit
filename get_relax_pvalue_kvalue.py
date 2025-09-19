@@ -25,6 +25,6 @@ def main(folder_path):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python get_PK.py folder/")
+        print("Usage: python get_relax_pvalue_kvalue.py folder/")
     else:
         main(sys.argv[1])
